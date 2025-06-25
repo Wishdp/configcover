@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Конфігуратор авточохлів Tuning Cobra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="topBar">
+    <h1>Конфігуратор авточохлів Tuning Cobra</h1>
+  </header>
+
+  <div id="configurator">
+    <aside class="panel left" id="leftPanel">
+      <h2>Основні опції</h2>
+
+      <label>Лінійка дизайну:
+        <select id="designSelect">
+          <option>Комфорт 1</option>
+          <option>Комфорт Плюс 2</option>
+          <option>Комфорт Плюс 3</option>
+          <option>Спорт 3</option>
+        </select>
+      </label>
+
+      <label>Колір основи:
+        <select id="baseColorSelect"></select>
+      </label>
+
+      <label>Центр:
+        <select id="centerSelect"></select>
+      </label>
+
+      <label>
+        <input type="checkbox" id="centerLaminCheckbox">
+        Центр штучна шкіра
+      </label>
+      <select id="centerLaminColorSelect" disabled></select>
+
+      <label>
+        <input type="checkbox" id="centerPerfaCheckbox">
+        Центр перфорація
+      </label>
+      <select id="centerPerfaColorSelect" disabled></select>
+
+      <label>
+        <input type="checkbox" id="insertEnable"> Кольорові вставки
+      </label>
+      <select id="insertColorSelect"></select>
+
+      <!-- Только галочка для внутренних вставок -->
+      <label>
+        <input type="checkbox" id="innerInsertCheckbox">
+        Внутрішні вставки
+      </label>
+
+      <label>Подголівники:
+        <select id="headrestSelect">
+          <option value="base">Ціл основа</option>
+          <option value="center">Ціл центр</option>
+        </select>
+      </label>
+    </aside>
+
+    <main class="preview">
+      <div id="seatPreview">
+        <div id="layers" style="position:relative; width:100%; height:100%;"></div>
+      </div>
+    </main>
+
+    <aside class="panel right" id="rightPanel">
+      <h2>Декор та доповнення</h2>
+
+      <label>Оздоблення (шов):
+        <select id="stitchColorSelect">
+          <option value="черная">черная</option>
+          <option value="бежевая">бежевая</option>
+          <option value="белая">белая</option>
+          <option value="бирюзовая">бирюзовая</option>
+          <option value="бордовая">бордовая</option>
+          <option value="бронзовая">бронзовая</option>
+          <option value="желтая">желтая</option>
+          <option value="зеленая">зеленая</option>
+          <option value="коричневая">коричневая</option>
+          <option value="красная">красная</option>
+          <option value="оранжевая">оранжевая</option>
+          <option value="розовая">розовая</option>
+          <option value="рыжая">рыжая</option>
+          <option value="светло-серая">светло-серая</option>
+          <option value="серая">серая</option>
+          <option value="синяя">синяя</option>
+          <option value="голубая">голубая</option>
+          <option value="фиолетовая">фиолетовая</option>
+         </select>
+      </label>
+
+      <label style="margin-bottom:15px;">
+        Отделка по центру:
+        <select id="centerDecorSelect">
+          <option value="Без отделки по центру.svg">Без отделки по центру</option>
+          <option value="Стандарт.svg">Стандартная отделка</option>
+        </select>
+      </label>
+
+      <label style="display:block; margin-top:10px;">
+        <input type="checkbox" id="embroideryEnable">
+        Включити вишивку
+      </label>
+      <label>Вишивка (файл):
+        <select id="embroiderySelect"></select>
+      </label>
+
+      <label>
+        <input type="checkbox" id="stripeOption">
+        Полоса по центру
+      </label>
+
+      <label>Колір смуги:
+        <select id="stripeColorSelect">
+          <option value="бежевая">бежевая</option>
+          <option value="белая">белая</option>
+          <option value="бирюзовая">бирюзовая</option>
+          <option value="бордовая">бордовая</option>
+          <option value="бронзовая">бронзовая</option>
+          <option value="желтая">желтая</option>
+          <option value="зеленая">зеленая</option>
+          <option value="коричневая">коричневая</option>
+          <option value="красная">красная</option>
+          <option value="оранжевая">оранжевая</option>
+          <option value="розовая">розовая</option>
+          <option value="рыжая">рыжая</option>
+          <option value="светло-серая">светло-серая</option>
+          <option value="серая">серая</option>
+          <option value="синяя">синяя</option>
+          <option value="голубая">голубая</option>
+          <option value="фиолетовая">фиолетовая</option>
+          <option value="черная">черная</option>
+        </select>
+      </label>
+
+      <label>Логотип:
+        <select id="logoSelect"></select>
+      </label>
+
+      <label>
+        <input type="checkbox" id="logoEnable">
+        Додати логотип
+      </label>
+    </aside>
+  </div>
+
+  <button id="saveImageBtn">Зберегти зображення сидіння</button>
+
+  <div id="notice-popup" style="display:none;">
+  <div id="notice-content">
+    <span id="notice-close">&times;</span>
+    <p>
+      <b>Увага!</b><br>
+      Пам'ятайте, це тільки для візуалізації матеріалів та кольорів,<br>
+      дизайн вашого сидіння відрізнятиметься.<br>
+      Дякуємо за розуміння.
+    </p>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</body>
+</html>

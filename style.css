@@ -1,0 +1,169 @@
+/* === Общие стили для всей страницы === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: url("images/background/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+/* === Верхняя панель (заголовок) === */
+#topBar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* === Основной контейнер конфигуратора === */
+#configurator {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* === Левая и правая панели === */
+.panel {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.left {
+  align-self: flex-start;
+}
+
+.right {
+  align-self: flex-start;
+}
+
+/* === Стили для label и select === */
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+select,
+input[type="checkbox"] {
+  margin-top: 5px;
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+/* === Превью сиденья (основное изображение) === */
+.preview {
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 800px;
+  min-height: 500px;
+}
+
+#seatPreview {
+  position: relative;
+  width: 550px;
+  height: 650px;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#layers {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* === Стили для изображений и SVG в превью === */
+#layers img,
+#layers svg {
+  position: absolute;
+  left: 0;         /* добавь! */
+  top: 0;          /* добавь! */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#centerDecorSelect {
+  float: right;
+  margin-top: 10px;
+}
+
+/* === Стили для уведомлений (поп-апов) === */
+#notice-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s;
+}
+#notice-content {
+  background: #631010;
+  padding: 28px 36px 24px 36px;
+  border-radius: 14px;
+  position: relative;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  font-family: inherit;
+  font-size: 1.08em;
+  animation: popupAppear 0.6s;
+}
+#notice-close {
+  position: absolute;
+  top: 10px; right: 16px;
+  font-size: 28px;
+  color: #1d1b1b;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+#notice-close:hover {
+  color: #d00;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes popupAppear {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* === Стили для кнопки сохранения изображения === */
+#saveImageBtn {
+  background: #2d7cff;   /* Цвет фона кнопки */
+  color: #fff;           /* Цвет текста кнопки */
+  border: none;
+  border-radius: 7px;
+  padding: 12px 24px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 10px;
+}
+#saveImageBtn:hover {
+  background: #2d4f85;   /* Цвет фона при наведении */
+  color: #19b40b;           /* Цвет текста при наведении */
+}
