@@ -602,14 +602,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const option = document.createElement("option");
       option.value = `bezotdelka/${file}`;
       option.textContent = file.replace(/\.\w+$/, "") + " (без отделки)";
-      option.dataset.type = "bezотделка";
+      option.dataset.type = "bezotdelka";
       centerSelect.appendChild(option);
     });
   }
 
   // === БЛОК: Логика блокировки чекбоксов и select-ов ===
   function updateCenterControls() {
-    if (centerLaminCheckbox.checked) {
+    if (centerLaminCheckbox.checked) {  
       centerLaminColorSelect.disabled = false;
       centerPerfaCheckbox.disabled = true;
       centerPerfaCheckbox.checked = false;
