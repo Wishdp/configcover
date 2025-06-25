@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === БЛОК: Логика блокировки чекбоксов и select-ов ===
   function updateCenterControls() {
-    if (centerLaminCheckbox.checked) {  
+    if (centerLaminCheckbox.checked) {
       centerLaminColorSelect.disabled = false;
       centerPerfaCheckbox.disabled = true;
       centerPerfaCheckbox.checked = false;
