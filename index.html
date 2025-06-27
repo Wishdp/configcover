@@ -7,6 +7,16 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
+  <!-- Блок авторизации -->
+  <div id="authScreen" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:#222;display:flex;align-items:center;justify-content:center;">
+    <form id="authForm" style="background:#fff;padding:32px 24px;border-radius:8px;box-shadow:0 0 20px #0003;display:flex;flex-direction:column;gap:16px;min-width:260px;">
+      <h2 style="margin:0 0 12px 0;">Вхід</h2>
+      <input type="text" id="loginInput" placeholder="Логін" autocomplete="username" required>
+      <input type="password" id="passwordInput" placeholder="Пароль" autocomplete="current-password" required>
+      <button type="submit">Увійти</button>
+      <div id="authError" style="color:red;display:none;">Невірний логін або пароль</div>
+    </form>
+  </div>
 
   <header id="topBar">
     <h1>Конфігуратор авточохлів Tuning Cobra</h1>
@@ -111,20 +121,20 @@
 
       <label>Колір смуги:
         <select id="stripeColorSelect">
-          <option value="бежевая">бежевая</option>
-          <option value="белая">белая</option>
-          <option value="бирюзовая">бирюзовая</option>
-          <option value="бордовая">бордовая</option>
-          <option value="зеленая">зеленая</option>
-          <option value="коричневая">коричневая</option>
-          <option value="красная">красная</option>
-          <option value="оранжевая">оранжевая</option>
-          <option value="рыжая">рыжая</option>
-          <option value="светло-серая">светло-серая</option>
-          <option value="серая">серая</option>
-          <option value="синяя">синяя</option>
-          <option value="фиолетовая">фиолетовая</option>
-          <option value="черная">черная</option>
+          <option value="бежевая">бежева</option>
+          <option value="белая">бела</option>
+          <option value="бирюзовая">бірюзова</option>
+          <option value="бордовая">бордова</option>
+          <option value="зеленая">зелена</option>
+          <option value="коричневая">коричнева</option>
+          <option value="красная">червона</option>
+          <option value="оранжевая">оранжева</option>
+          <option value="рыжая">рижа</option>
+          <option value="светло-серая">світло-сіра</option>
+          <option value="серая">сіра</option>
+          <option value="синяя">синя</option>
+          <option value="фиолетовая">фіолетова</option>
+          <option value="черная">чорна</option>
         </select>
       </label>
 
@@ -140,6 +150,7 @@
   </div>
 
   <button id="saveImageBtn">Зберегти зображення сидіння</button>
+  <button id="logoutBtn" style="position:fixed;top:16px;right:16px;z-index:10001;display:none;">Вийти</button>
 
   <div id="notice-popup" style="display:none;">
   <div id="notice-content">

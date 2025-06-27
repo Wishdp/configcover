@@ -4,6 +4,61 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("notice-popup").style.display = "none";
   };
 
+  
+const USERS = [
+  { login: "Автогруз", password: "4321" },
+  { login: "Автомания", password: "4321" },
+  { login: "admin", password: "admin" },
+  { login: "Антараком", password: "4321" },
+  { login: "Карковерс", password: "4321" },
+  { login: "TuningCobra", password: "4321" },
+  { login: "КобраАвто", password: "4321" },
+  { login: "Авточехол", password: "4321" },
+  { login: "360auto", password: "4321" },
+  { login: "Mrkovrik", password: "4321" },
+  { login: "Кара", password: "4321" },
+  { login: "Автобрат", password: "4321" },
+  { login: "Николаев", password: "4321" },
+  { login: "teste", password: "4321" }
+  
+];
+
+// --- Проверка авторизации при загрузке ---
+const savedLogin = localStorage.getItem("seatUser");
+if (savedLogin && USERS.some(u => u.login === savedLogin)) {
+  document.getElementById("authScreen").style.display = "none";
+  document.body.style.overflow = ""; // <--- разрешаем прокрутку!
+  document.getElementById("logoutBtn").style.display = "block";
+} else {
+  document.getElementById("authScreen").style.display = "flex";
+  document.body.style.overflow = "hidden"; // <--- запрещаем прокрутку только при авторизации!
+  document.getElementById("logoutBtn").style.display = "none";
+}
+
+// --- Авторизация ---
+  const authScreen = document.getElementById("authScreen");
+  const authForm = document.getElementById("authForm");
+  const loginInput = document.getElementById("loginInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const authError = document.getElementById("authError");
+
+  // Проверка авторизации
+  authForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const login = loginInput.value.trim();
+    const password = passwordInput.value;
+    const found = USERS.find(u => u.login === login && u.password === password);
+    if (found) {
+      localStorage.setItem("seatUser", login);
+      authScreen.style.display = "none";
+      document.body.style.overflow = "";
+      document.getElementById("logoutBtn").style.display = "block";
+    } else {
+      authError.style.display = "block";
+    }
+  });
+
+  
   // === БЛОК: Получение элементов управления ===
   const baseColorSelect = document.getElementById("baseColorSelect");
   const designSelect = document.getElementById("designSelect");
@@ -626,24 +681,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateInnerInsertLock() {
     if (centerLaminCheckbox.checked || centerPerfaCheckbox.checked) {
+      // Снимаем галочку и блокируем
+      innerInsertCheckbox.checked = false;
       innerInsertCheckbox.disabled = true;
     } else {
       innerInsertCheckbox.disabled = false;
-    }
-
-    if (innerInsertCheckbox.checked) {
-      centerLaminCheckbox.checked = false;
-      centerLaminCheckbox.disabled = true;
-      centerLaminColorSelect.disabled = true;
-
-      centerPerfaCheckbox.checked = false;
-      centerPerfaCheckbox.disabled = true;
-      centerPerfaColorSelect.disabled = true;
-    } else {
-      centerLaminCheckbox.disabled = false;
-      centerLaminColorSelect.disabled = !centerLaminCheckbox.checked;
-      centerPerfaCheckbox.disabled = false;
-      centerPerfaColorSelect.disabled = !centerPerfaCheckbox.checked;
     }
   }
 
@@ -918,4 +960,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Привязка к кнопке
   document.getElementById("saveImageBtn").addEventListener("click", saveImage);
+  document.getElementById("logoutBtn").onclick = function() {
+    localStorage.removeItem("seatUser");
+    location.reload();
+  };
 });
