@@ -19,7 +19,7 @@ const USERS = [
   { login: "Кара", password: "4321" },
   { login: "Автобрат", password: "4321" },
   { login: "Николаев", password: "4321" },
-  { login: "teste", password: "4321" }
+  { login: "Riga", password: "4321" }
   
 ];
 
