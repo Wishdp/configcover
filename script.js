@@ -19,7 +19,7 @@ const USERS = [
   { login: "Кара", password: "4321" },
   { login: "Автобрат", password: "4321" },
   { login: "Николаев", password: "4321" },
-  { login: "Riga", password: "4321" }
+  { login: "teste", password: "4321" }
   
 ];
 
@@ -275,6 +275,21 @@ if (savedLogin && USERS.some(u => u.login === savedLogin)) {
 
     layers.innerHTML = "";
     layers.appendChild(tempLayers);
+    updateMagnifier();
+  }
+
+  // === БЛОК: Обновление лупи (magnifier) ===
+  function updateMagnifier() {
+    const seat = document.getElementById("seatPreview");
+    const magnifier = document.getElementById("magnifierContent");
+
+    magnifier.innerHTML = "";
+    const clone = seat.cloneNode(true);
+
+    // смещаем, чтобы показывать центр
+    clone.style.transform = "translate(-32%, -12%)";
+
+    magnifier.appendChild(clone);
   }
 
   // === БЛОК: Перекраска основы (base) ===
